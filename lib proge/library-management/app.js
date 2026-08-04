@@ -1,6 +1,6 @@
 
-import { books } from "./data/books.js";
-import { members } from "./data/members.js";
+import { books } from "../data/books.js";
+import { members } from "../data/members.js";
 import {
   addBook,
   viewAllBooks,
@@ -10,7 +10,7 @@ import {
   searchBooksByCategory,
   updateBook,
   deleteBook
-} from "./services/bookService.js";
+} from "../services/bookService.js";
 import {
   registerMember,
   viewMembers,
@@ -19,8 +19,8 @@ import {
   searchMemberByEmail,
   updateMember,
   deleteMember
-} from "./services/memberService.js";
-import { borrowBook, returnBook } from "./services/borrowService.js";
+} from "../services/memberService.js";
+import { borrowBook, returnBook } from "../services/borrowService.js";
 import {
   getLibraryStatistics,
   getBooksGroupedByCategory,
@@ -28,34 +28,33 @@ import {
   getBooksPublishedAfter,
   getUnavailableBooks,
   getMembersWithActiveBorrows
-} from "./services/reportService.js";
+} from "../services/reportService.js";
 
 console.log("Library Management System Starter");
 console.log("Books loaded:", books.length);
 console.log("Members loaded:", members.length);
-console.log("Uncomment sample calls in app.js after implementing the service functions.");
+console.log("Library statistics:", getLibraryStatistics());
+console.log("Sample book search:", searchBookById(2));
+console.log("Sample member search:", searchMemberById(101));
 
-// Sample calls for students to use after implementing the functions:
+// Example usage after implementation:
 // addBook({
-//   id: 1,
-//   title: "Clean Code",
-//   author: "Robert C. Martin",
+//   id: 7,
+//   title: "The Pragmatic Programmer",
+//   author: "Andrew Hunt",
 //   category: "Programming",
-//   publicationYear: 2008,
-//   isbn: "9780132350884",
-//   totalCopies: 5,
-//   availableCopies: 5
+//   publicationYear: 1999,
+//   isbn: "9780201616224",
+//   totalCopies: 3,
+//   availableCopies: 3
 // });
-//
 // registerMember({
-//   id: 101,
-//   firstName: "John",
-//   lastName: "Doe",
-//   email: "john@example.com",
-//   phone: "0912345678",
-//   borrowedBooks: []
+//   id: 104,
+//   firstName: "Sarah",
+//   lastName: "Brown",
+//   email: "sarah@example.com",
+//   phone: "0978901234"
 // });
-//
 // borrowBook(101, 1);
 // returnBook(101, 1);
 // console.log(viewAllBooks());
@@ -83,4 +82,4 @@ void getBooksGroupedByCategory;
 void getMostBorrowedCategory;
 void getBooksPublishedAfter;
 void getUnavailableBooks;
-void getMembersWithActiveBorrows; 
+void getMembersWithActiveBorrows;

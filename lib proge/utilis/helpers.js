@@ -1,14 +1,26 @@
 export function findById(items, id) {
-  // TODO: Find an item in an array by its ID.
-  throw new Error("TODO: Implement findById");
+  return items.find((item) => item.id === id) ?? null;
 }
 
 export function matchesText(value, searchTerm) {
-  // TODO: Compare text values for flexible searching.
-  throw new Error("TODO: Implement matchesText");
+  if (value === null || value === undefined) {
+    return false;
+  }
+
+  return String(value).toLowerCase().includes(String(searchTerm ?? "").toLowerCase());
 }
 
 export function formatMemberName(member) {
-  // TODO: Return a member's full name.
-  throw new Error("TODO: Implement formatMemberName");
+  if (!member) {
+    return "";
+  }
+
+  if (member.firstName || member.lastName) {
+    const first = member.firstName ?? "";
+    const last = member.lastName ?? "";
+    return `${first} ${last}`.trim();
+  }
+
+  return member.name ?? "";
 }
+
