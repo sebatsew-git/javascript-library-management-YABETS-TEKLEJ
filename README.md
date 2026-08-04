@@ -1,53 +1,54 @@
 # JavaScript Library Management System
 
 ## Project Description
-This project is a console-based JavaScript library management system designed to manage books, members, borrowing and returning records, and basic library reporting. It demonstrates how JavaScript can be used to model real-world library operations in a structured and modular way.
+This project is a console-based JavaScript library management system implemented to manage books, library members, borrowing activities, returning records, and essential reporting functions. The application is designed to demonstrate realistic data management and business logic in a simple but structured way.
 
-The system is built using ES modules and organized into separate folders for data, services, and validation utilities. It helps users understand how to work with arrays, objects, functions, and business rules in a realistic application.
+The project uses JavaScript modules to separate the system into data storage, business logic, and validation layers. It helps users practice core programming concepts such as arrays, objects, functions, conditional rules, and modular code organization in a practical library setting.
 
 ## Detailed Feature Overview
+The system includes the following features:
+
 - Add new books to the library
-- View all available books
+- View all books in the collection
 - Search books by ID, title, author, and category
-- Update book details
-- Delete books only when no active borrow exists
-- Register new members
+- Update book information
+- Delete books only when no active borrowing exists
+- Register new library members
 - View all members
 - Search members by ID, name, and email
-- Update member information
-- Delete members only when they have no active borrow
+- Update member details
+- Delete members only when they have no active borrows
 - Borrow books from the library
 - Return borrowed books
-- Track active borrowing records
-- Generate library statistics
+- Track borrow and return activity
+- Check library statistics
 - Identify the most borrowed category
-- Find books published after a selected year
-- Display unavailable books
-- Show members with active borrows
+- Find books published after a given year
+- Find unavailable books
+- List members with active borrows
 
 ## JavaScript Concepts, ES6+ Features, and Array Methods Utilized
-This project applies several important JavaScript concepts and modern features:
+This project uses multiple JavaScript concepts and modern ES6+ features.
 
-### JavaScript concepts
+### JavaScript concepts used
 - Variables and data types
-- Functions and function parameters
+- Functions and reusable logic
 - Objects and arrays
-- Control flow with conditionals
-- Error handling using try/catch and throw
-- Modular programming with import/export
-- Business logic separation into service files
+- Conditional statements and validation rules
+- Error handling with `throw new Error()`
+- Data modeling for a real-world system
+- Modular design using JavaScript imports and exports
 
 ### ES6+ features used
 - Arrow functions
 - Template literals
-- Object literals
-- Destructuring
-- Spread operator (...)
-- Map and Set
-- `Number()` conversion
+- Object spread syntax
+- Destructuring assignments
+- `Set` for unique data collection
+- `Number()` conversion and type normalization
 - Optional chaining (`?.`)
 - Nullish coalescing (`??`)
-- `import` and `export` modules
+- ES module syntax with `import` and `export`
 
 ### Array methods used
 - `map()`
@@ -57,7 +58,7 @@ This project applies several important JavaScript concepts and modern features:
 - `reduce()`
 - `some()`
 
-These methods are used to search, validate, filter, group, and summarize records effectively.
+These methods are used to search records, validate input, organize categories, calculate statistics, and manage member and book records efficiently.
 
 ## Folder Structure Breakdown
 ```text
@@ -82,11 +83,9 @@ javascript-library-management-YABETS TEKLE/
 ```
 
 ### Folder purposes
-- `data/`: stores all initial book and member data
-- `services/`: contains business logic for each module
-- `utilis/`: contains helper and validation functions
-- `library-management/`: contains the app entry point and project configuration
+- `data/`: contains the sample book and member records
+- `services/`: contains the business logic for books, members, borrowing, and reporting
+- `utilis/`: contains reusable helper functions and input validation logic
+- `library-management/`: contains the entry point for the application and project configuration
 
-## Conclusion
-This project demonstrates how JavaScript can be used to build a small but realistic application with modular code, reusable functions, and data-driven logic. It is a strong example of how to structure and manage a simple system using ES modules and array-based data operations.
 
