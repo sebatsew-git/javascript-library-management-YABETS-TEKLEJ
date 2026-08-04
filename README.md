@@ -1,5 +1,10 @@
 # JavaScript Library Management System
 
+## student name: YABETS TEKLE
+      email: sebatse@gmail.com
+       Enrolled in: AI-Powered Backend Development
+       Enrolled Class: Backend Cohort 1
+
 ## Project Description
 This project is a console-based JavaScript library management system implemented to manage books, library members, borrowing activities, returning records, and essential reporting functions. The application is designed to demonstrate realistic data management and business logic in a simple but structured way.
 
