@@ -1,128 +1,106 @@
+import { books } from "../data/books.js";
+import { borrows } from "./borrowService.js";
+import { validateBook } from "../utilis/validator.js";
+
+const normalizeId = (value) => Number(value);
+const normalizeText = (value) => String(value ?? "").trim().toLowerCase();
+
 export function addBook(bookData) {
-  // TODO: Validate and add a new book to the books array.
-function name(params) {
- addBook(book) {
- // Implementation for adding a book
- book.id = book.id || Date.now();
- books.push(book);
- return book; 
- }
-  throw new Error("TODO: Implement addBook");
+  validateBook(bookData);
+
+  const normalizedBook = {
+    ...bookData,
+    id: normalizeId(bookData.id ?? Date.now()),
+    totalCopies: Number(bookData.totalCopies ?? bookData.copies ?? 0),
+    availableCopies: Number(
+      bookData.availableCopies ?? bookData.totalCopies ?? bookData.copies ?? 0
+    )
+  };
+
+  books.push(normalizedBook);
+  return normalizedBook;
 }
-
-
-
-
 
 export function viewAllBooks() {
-  // TODO: Return or display all books in a clean format.
-function viewAllBooks() {
-  // Implementation for viewing all books
-  return books;
+  return [...books];
 }
-  throw new Error("TODO: Implement viewAllBooks");
-}
-
-
-
 
 export function searchBookById(bookId) {
-  // TODO: Find one book by its ID.
-   function searchBook(query) {
-   // Implementation for searching books
-    return books.filter((book) =>
-      book.id.toLowerCase().includes(query.toLowerCase()) 
-    );
- }
-  throw new Error("TODO: Implement searchBookById");
+  const id = normalizeId(bookId);
+  return books.find((book) => book.id === id) ?? null;
 }
-
-
-
-
 
 export function searchBooksByTitle(title) {
-  // TODO: Find books whose titles match the search text.
-     function searchBook(query) {
-   // Implementation for searching books
-    return books.filter((book) =>
-      book.title.toLowerCase().includes(query.toLowerCase()) 
-    );
- }
-  throw new Error("TODO: Implement searchBooksByTitle");
+  const query = normalizeText(title);
+  if (!query) return [...books];
+
+  return books.filter((book) => normalizeText(book.title).includes(query));
 }
-
-
-
-
 
 export function searchBooksByAuthor(author) {
-  // TODO: Fnd books whose authors match the search text.
-     function searchBook(query) {
-   // Implementation for searching books
-    return books.filter((book) =>
-      book.author.toLowerCase().includes(query.toLowerCase())
-    );
- }
-  throw new Error("TODO: Implement searchBooksByAuthor");
+  const query = normalizeText(author);
+  if (!query) return [...books];
+
+  return books.filter((book) => normalizeText(book.author).includes(query));
 }
-
-
-
 
 export function searchBooksByCategory(category) {
-  // TODO: Find books whose categories match the search text.
-      function searchBook(query) {
-  // Implementation for searching books
-   return books.filter((book) =>
-     book.category.toLowerCase().includes(query.toLowerCase()) 
-   );
-}
-  throw new Error("TODO: Implement searchBooksByCategory");
-}
+  const query = normalizeText(category);
+  if (!query) return [...books];
 
-
+  return books.filter((book) => normalizeText(book.category).includes(query));
+}
 
 export function updateBook(bookId, updates) {
-  // TODO: Validate and apply allowed updates to a book.
-   function updateBook(bookId, updatedBook) {
-   // Implementation for updating a book
-    const index = books.findIndex((book) => book.id === bookId);
-    if (index !== -1) {
-      books[index] = { ...books[index], ...updatedBook };
-      return books[index];
-    }
-    return null;
- }
-  throw new Error("TODO: Implement updateBook");
-}
+  const id = normalizeId(bookId);
+  const bookIndex = books.findIndex((item) => item.id === id);
 
+  if (bookIndex === -1) {
+    throw new Error("Book not found");
+  }
+
+  const allowedUpdates = [
+    "title",
+    "author",
+    "category",
+    "publicationYear",
+    "isbn",
+    "totalCopies",
+    "availableCopies"
+  ];
+
+  const updateKeys = Object.keys(updates ?? {});
+  for (const key of updateKeys) {
+    if (!allowedUpdates.includes(key)) {
+      throw new Error(`Update not allowed: ${key}`);
+    }
+  }
+
+  const updatedBook = {
+    ...books[bookIndex],
+    ...updates
+  };
+
+  books[bookIndex] = updatedBook;
+  return updatedBook;
+}
 
 export function deleteBook(bookId) {
-  // TODO: Remove a book only when all copies have been returned.
-function deleteBook(bookId) {
-  // Implementation for deleting a book
-  const index = books.findIndex((book) => book.id === bookId);
-   if (index !== -1) {
-     books.splice(index, 1);
-     return true;
+  const id = normalizeId(bookId);
+  const bookIndex = books.findIndex((item) => item.id === id);
+
+  if (bookIndex === -1) {
+    throw new Error("Book not found");
+  }
+
+  const hasActiveBorrow = borrows.some(
+    (borrow) => borrow.bookId === id && !borrow.returned
+  );
+
+  if (hasActiveBorrow) {
+    throw new Error("Cannot delete book with active borrows");
+  }
+
+  books.splice(bookIndex, 1);
+  return true;
 }
-  throw new Error("TODO: Implement deleteBook");
-}
-
-
-
-
-
-
-
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
