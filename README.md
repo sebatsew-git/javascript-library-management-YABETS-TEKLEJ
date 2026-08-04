@@ -1,7 +1,7 @@
 # JavaScript Library Management System
 
 ## student name: YABETS TEKLE
-      email: sebatse@gmail.com
+      email: sebatsew@gmail.com
        Enrolled in: AI-Powered Backend Development
        Enrolled Class: Backend Cohort 1
 
