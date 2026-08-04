@@ -23,6 +23,7 @@ export function validateBook(bookData) {
 
   const duplicateBook = books.find(
     (book) => book.id === normalizeId(bookData.id) || book.isbn === bookData.isbn
+
   );
 
   if (duplicateBook) {
@@ -45,6 +46,7 @@ export function validateMember(memberData) {
   const duplicateMember = members.find(
     (member) =>
       member.id === normalizeId(memberData.id) ||
+
       member.email === memberData.email ||
       member.phone === memberData.phone
   );
@@ -61,6 +63,7 @@ export function validateBorrowRequest(memberId, bookId) {
 
   const member = members.find((item) => item.id === normalizeId(memberId));
   const book = books.find((item) => item.id === normalizeId(bookId));
+
 
   if (!member) {
     throw new Error("Member not found");
@@ -82,6 +85,7 @@ export function validateReturnRequest(memberId, bookId) {
 
   const member = members.find((item) => item.id === normalizeId(memberId));
   const book = books.find((item) => item.id === normalizeId(bookId));
+
 
   if (!member) {
     throw new Error("Member not found");
