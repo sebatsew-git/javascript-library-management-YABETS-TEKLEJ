@@ -1,0 +1,18 @@
+{
+  "name": "library-management-starter",
+  "version": "1.0.0",
+  "description": "Starter scaffold for a console-based Library Management System using JavaScript.",
+  "type": "module", 
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "library",
+    "starter"
+  ],
+  "author": "",
+  "license": "MIT"
+}
